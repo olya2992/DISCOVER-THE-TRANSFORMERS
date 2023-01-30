@@ -1,25 +1,39 @@
-import logo from './logo.svg';
+import React from 'react';
+import { useState } from 'react';
+import { data } from './data';
+
 import './App.css';
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Link
+} from "react-router-dom";
+import Characters from './Characters'
+import Universe from './Universe';
+import Movies from './Movies';
+
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+  return(
+ 
+    <Router>
+      <nav>
+        <Link to = '/' className='link' > Characters </Link>
+        <Link to ='/universe' className='link'>Universe</Link>
+        <Link to ='/movies' className='link'>Movies</Link>
+      </nav>
+
+      <Routes>
+        <Route path='/' element={<Characters/>}/>
+        <Route path='/universe' element={<Universe/>}/>
+        <Route path='/movies' element={<Movies/>}/>
+      </Routes>
+    </Router>
+  )
 }
 
 export default App;
+
+
+
